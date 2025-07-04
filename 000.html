@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+        <h1>成績輸入</h1>
+    <script>
+        var score;
+        var passCount = 0;
+        var failCount = 0;
+        var totalScore = 0;
+        var count = 0;
+
+        while (true) {
+            score = parseInt(prompt("請輸入成績（輸入-1結束）："));
+            if (score === -1) {
+                break; // 結束輸入
+            }
+            if (score >= 60) {
+                passCount++;
+            } else {
+                failCount++;
+            }
+            totalScore += score;
+            count++;
+        }
+
+        if (count > 0) {
+            var average = totalScore / count;
+            document.write(`及格人數：${passCount}<br>`);
+            document.write(`不及格人數：${failCount}<br>`);
+            document.write(`全班總分：${totalScore}<br>`);
+            document.write(`全班平均：${average.toFixed(2)}<br>`);
+        } else {
+            document.write("沒有輸入任何成績。");
+        }
+    </script>
+</body>
+</html>

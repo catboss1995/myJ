@@ -35,9 +35,9 @@ a => err！非數字，請重新輸入！
         -->
 
     <h1>成績計算結果</h1>
-    <!-- 新增一個區塊來在HTML網頁的部分顯示結果
-    <div id="result"></div> -->
-    <!-- 這邊我還沒想通，我想彈窗上面看完，同時把各項結果顯示在頁面 -->
+    <!-- 新增一個區塊來在HTML網頁的部分顯示結果 -->
+    <div id="result"></div>
+    <!-- 我想彈窗上面看完，同時把各項結果顯示在頁面 -->
 
     <script>
         // 及格分數
@@ -53,6 +53,11 @@ a => err！非數字，請重新輸入！
             //存放輸入分數
             var grades = prompt("請輸入成績");
             if (grades === null) {
+                pass = 0;
+                fail = 0;
+                tot = 0;
+                avg = 0.0;
+                alert("您按了取消，即將結束輸入！");
                 break;
             } else if (grades === "") {
                 alert("成績不能空白，請重新輸入");
@@ -61,10 +66,11 @@ a => err！非數字，請重新輸入！
                 alert("err！非數字，請重新輸入！");
                 continue;
             }
-
+            //字串轉數字
             grades = Number(grades);
 
             if (grades === -1) {
+                alert("成績輸入結束");
                 break;
             } else if (grades < 0 || grades > 100) {
                 alert("err！不是有效範圍0-100，請重新輸入！");
@@ -91,6 +97,14 @@ a => err！非數字，請重新輸入！
                 "全班總分: " + totalScore + "\n" +
                 "全班平均: " + (totalScore / studentCount).toFixed(2)
             );
+            var average = totalScore / studentCount;
+            // 顯示結果到頁面
+            var result = document.getElementById("result");
+            result.innerHTML =
+                "及格人數：" + passCount + "<br>" +
+                "不及格人數：" + failCount + "<br>" +
+                "全班總分：" + totalScore + "<br>" +
+                "全班平均：" + average.toFixed(2) + "<br>";
         } else {
             alert("沒有有效成績輸入。");
         }
