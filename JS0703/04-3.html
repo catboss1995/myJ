@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>四則運算互動2</title>
+</head>
+
+<body>
+    <!-- 標籤 -->
+    <label for="">數值1</label>
+    <!-- 文字方塊 -->
+    <input type="number" id="n1">
+    <br>
+    <hr>
+    <!-- 外面雙引號，裡面就單引號部的重複 -->
+    <button onclick="calc('+')">+</button>
+    <button onclick="calc('-')">-</button>
+    <button onclick="calc('*')">*</button>
+    <button onclick="calc('/')">/</button>
+    <br>
+    <hr>
+    <label for="">數值2</label>
+    <input type="number" id="n2">
+
+    <p id="result">合計結果</p>
+
+    <script>
+        var n1 = document.getElementById("n1");
+        var n2 = document.getElementById("n2");
+        var result =document.getElementById("result");
+
+        function calc(op){
+            switch (op){
+                case '+':
+                result.textContent = parseInt(n1.value) + parseInt(n2.value);
+                break;
+                case '-':
+                result.textContent = parseInt(n1.value) - parseInt(n2.value);
+                break;
+                case '*':
+                result.textContent = parseInt(n1.value) * parseInt(n2.value);
+                break;
+                case '/':
+                result.textContent = (parseInt(n1.value) / parseInt(n2.value)).toFixed(2);
+                break;
+            }
+        }
+    </script>
+</body>
+
+</html>

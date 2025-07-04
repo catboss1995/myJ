@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>四則運算互動</title>
+</head>
+
+<body>
+    <!-- 標籤 -->
+    <label for="">數值1</label>
+    <!-- 文字方塊 -->
+    <input type="number" id="n1">
+    <br>
+    <hr>
+    <button onclick="fun1()">+</button>
+    <button onclick="fun2()">-</button>
+    <button onclick="fun3()">*</button>
+    <button onclick="fun4()">/</button>
+    <br>
+    <hr>
+    <label for="">數值2</label>
+    <input type="number" id="n2">
+
+    <p id="result">合計結果</p>
+
+    <script>
+        var n1 = document.getElementById("n1");
+        var n2 = document.getElementById("n2");
+        var result =document.getElementById("result");
+        function fun1() {
+            result.textContent = parseInt(n1.value) + parseInt(n2.value);
+        }
+        function fun2() {
+            result.textContent = parseInt(n1.value) - parseInt(n2.value);
+        }
+        function fun3() {
+            result.textContent = parseInt(n1.value) * parseInt(n2.value);
+        }
+        function fun4() { //toFixed(2) => 小數點(幾位)
+            result.textContent = parseInt((n1.value) / parseInt(n2.value)).toFixed(2);
+        }
+    </script>
+</body>
+
+</html>

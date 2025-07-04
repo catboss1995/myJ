@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>迴圈-成績輸入</title>
+</head>
+
+<body>
+<!-- 題目 --- 
+請輸入成績N次, 直到輸入-1時結束
+並統計出如下
+1.及格人數
+2.不及格人數
+3.全班總分
+4.全班平均
+測試資料如下
+90
+10
+-2 => err！不是有效範圍0-100，請重新輸入！
+30
+100
+a => err！非數字，請重新輸入！
+66
+-1 => 結束
+-->
+
+        <!-- 思考
+        // 設置成績有效範圍0-100
+        // 非數字無效 
+        // 統計有效輸入次數(人數 == 及格 & 不及格)
+        // 合計有效分數
+        // 有效分數 / 總人數 = 平均
+        -->
+
+    <h1>成績計算結果</h1>
+
+    <script>
+        // 及格分數
+        var passCount = 0;
+        // 不及格分數
+        var failCount = 0;
+        // 總和分數
+        var totalScore = 0;
+        // 學生人數
+        var studentCount = 0;
+
+        do {
+            //存放輸入分數
+            var grades = prompt("請輸入成績");
+            if (grades === null) {
+                break;
+            } else if (grades === "") {
+                alert("成績不能空白，請重新輸入");
+                continue;
+            } else if (isNaN(Number(grades))) {
+                alert("err！非數字，請重新輸入！");
+                continue;
+            }
+
+            grades = Number(grades);
+
+            if (grades === -1) {
+                break;
+            } else if (grades < 0 || grades > 100) {
+                alert("err！不是有效範圍0-100，請重新輸入！");
+                continue;
+            }
+
+            //依輸入遞增學生人數
+            studentCount++;
+            totalScore += grades;
+            
+            //及格大於等於60分
+            if (grades >= 60) {
+                passCount++;
+            } else {
+                failCount++;
+            }
+
+        } while (true);
+
+        if (studentCount > 0) {
+            alert(
+                "及格人數: " + passCount + "\n" +
+                "不及格人數: " + failCount + "\n" +
+                "全班總分: " + totalScore + "\n" +
+                "全班平均: " + (totalScore / studentCount).toFixed(2)
+            );
+        } else {
+            alert("沒有有效成績輸入。");
+        }
+    </script>
+
+</body>
+
+</html>
