@@ -59,7 +59,7 @@ a => err！非數字，請重新輸入！
                 avg = 0.0;
                 alert("您按了取消，即將結束輸入！");
                 break;
-            } else if (grades === "") {
+            } else if (grades.trim() === "") {
                 alert("成績不能空白，請重新輸入");
                 continue;
             } else if (isNaN(Number(grades))) {
