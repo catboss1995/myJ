@@ -71,7 +71,7 @@
         // 顯示正確答案
         alert(`正確答案是 ${rd}`);
         //-------------------------------------這裡是兩種答案的分水嶺-------------------------------
-        // 提示:以下使用for迴圈，限制最多5次
+        // 提示:以下使用 while 搭配 for 迴圈，限制最多5次
         // var rd = Math.floor(Math.random() * 100) + 1; // 1~100
         // console.log('正確答案:', rd);
         // var min = 1;
@@ -79,32 +79,37 @@
         // var log = [];
         // var maxTries = 5;
         // var i = 0;
+        // str1 = "";
         // while (i < maxTries) {
         //     var triesLeft = maxTries - i;
         //     var input = prompt(`第${i + 1}次，請輸入${min}~${max}的數字：\n（還有${triesLeft}次機會）`);
         //     var num = parseInt(input);
         //     // 防呆：檢查是否為有效數字且在範圍內,如在1-100以外,提示以及不消耗猜測的次數
         //     if (isNaN(num) || num < min || num > max) {
-        //     alert(`請輸入${min}~${max}之間的有效數字！\n（不會扣除次數）`);
+        //     str1 = `請輸入${min}~${max}之間的有效數字！\n（不會扣除次數）`
+        //     alert(str1);
         //     continue;
         //     }
         //     if (num === rd) {
-        //     log.push(`第${i + 1}次：${num} => 恭喜你猜對了！`);
-        //     alert(`第${i + 1}次：${num} => 恭喜你猜對了！`);
+        //     str1 = `第${i + 1}次：${num} => 恭喜你猜對了！`
+        //     log.push(str1);
+        //     alert(str1);
         //     break;
         //     } else if (num < rd) {
+        //     str1 = `第${i + 1}次：${num} => 太小了（提示：${min}-${max}）`
         //     min = Math.max(min, num);
-        //     log.push(`第${i + 1}次：${num} => 太小了（提示：${min}-${max}）`);
-        //     alert(`第${i + 1}次：${num} => 太小了（提示：${min}-${max}）\n（還有${triesLeft - 1}次機會）`);
+        //     log.push(str1);
+        //     alert(str1 + \n（還有${triesLeft - 1}次機會）`);
         //     } else if (num > rd) {
+        //     str1 = `第${i + 1}次：${num} => 太大了（提示：${min}-${max}）`
         //     max = Math.min(max, num);
-        //     log.push(`第${i + 1}次：${num} => 太大了（提示：${min}-${max}）`);
-        //     alert(`第${i + 1}次：${num} => 太大了（提示：${min}-${max}）\n（還有${triesLeft - 1}次機會）`);
+        //     log.push(str1);
+        //     alert(str1 + \n（還有${triesLeft - 1}次機會）`);
         //     }
         //     i++;
         // }
-        // // 顯示for迴圈猜測過程和結果在頁面上
-        // var resultHtml2 = '<h3>（for迴圈）猜數字遊戲結果</h3><ol>';
+        // // 顯示猜測過程和結果在頁面上
+        // var resultHtml2 = '<h3>猜數字遊戲結果</h3><ol>';
         // for (var j = 0; j < log.length; j++) {
         //     resultHtml2 += `<li>${log[j]}</li>`;
         // }

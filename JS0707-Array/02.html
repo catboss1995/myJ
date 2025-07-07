@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>陣列</title>
+</head>
+
+<body>
+    <h2>陣列</h2>
+    <hr>
+
+    <script>
+        // //建立一個陣列,存放任意5個值
+        // let arr1 = [1, 2, 3, 4, 5];
+        // //使用迴圈,產生1-5的數字到陣列中
+        // for (let i = 0; i <= 4; i++) {
+        //     console.log(arr1[i]);
+        // }
+
+        // //建立一個陣列,存放任意N個值
+        // let arr2 = [1, 2, 3, 4, 5, 8];
+        // //使用迴圈,顯示陣列中的內容
+        // for (let i = 0; i < arr2.length; i++) {
+        //     console.log(arr2[i]);
+        // }
+
+        //建立一個陣列,存放任意N個值
+        let arr3 = [10, 200, 30];
+        console.log("尚未排序前" + arr3);
+
+        //遞增排序
+        //使用箭頭函式寫法
+        arr3.sort((a, b) => {
+            return a - b;
+        });
+        console.log("遞增排序前" + arr3);
+
+        //遞減排序
+        arr3.sort((a, b) => {
+            return b - a;
+        });
+        console.log("遞減排序前" + arr3);
+
+    </script>
+
+</body>
+
+</html>
