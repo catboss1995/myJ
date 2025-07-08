@@ -1,0 +1,49 @@
+body {
+    margin: 2em;
+    background: #fafafa;
+}
+/*按鈕樣式實驗*/
+button {
+    padding: 0.6em 1.6em; /* 上下左右內邊距 */
+    font-size: 1.1em;  /* 字體大小 */
+    margin-right: 1em; /* 右邊距離 */
+    border-width: 0.3em; solid #000000; /* 邊框寬度 . 黑色邊框 */
+    border-radius: 1.5em;   /* 圓角 */
+    color: #000000; /* 深色文字 */
+    cursor: pointer; /* 鼠標變手型 */
+    transition: background 0.2s, color 0.2s, box-shadow 0.2s; /* 過渡效果 */
+    box-shadow: 0 2px 8px #807f7177; /* 陰影 */
+    display: inline-flex;   /* 讓圖片和文字在同一行 */
+    align-items: center; /* 垂直對齊 */
+    gap: 0.4em;            /* 圖片和文字間距 */
+}
+button img {
+    height: 2em;
+    vertical-align: middle; /* 圖片垂直對齊 */
+    margin-right: 0.2em; /* 圖片右邊距離 */
+}
+button:hover {
+    background: #ffdb3b; /* 懸停時背景變亮 */
+    color: #000000; /* 懸停時文字變深 */
+    box-shadow: 0 4px 16px #2b2b2b77; /* 懸停時陰影變大 */
+}
+.result {
+    margin: 2em 0;
+    font: 1.2em monospace; /* 使用等寬字體 */
+}
+
+table {
+    border-collapse: collapse; /* 合併邊框 */
+    width: 95%; /* 寬度95% */
+    margin: 1em 0;
+}
+
+th, td {
+    border: 1px solid #aaa; /* 邊框顏色 */
+    padding: 0.5em; /* 格內邊距 */
+    text-align: center; /* 文字居中 */
+}
+
+th {
+    background: #ececec;
+}
