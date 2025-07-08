@@ -20,6 +20,9 @@
             margin: 2em;
             font: 1em sans-serif;
         }
+        #historyTable {
+            border: 1px;
+        }
     </style>
 </head>
 
@@ -33,121 +36,125 @@
     <button onclick="playGame('539')">今彩539</button>
     <br>
     <hr>
+
     <div class="result" id="result"></div>
+    <br>
+    <hr>
+
+
+    
+    <!-- <h2>已開出號碼紀錄</h2>
+    <table id="historyTable" cellpadding="6">
+        <thead>
+            <tr>
+                <th>期數</th>
+                <th>第一區</th>
+                <th>第二區</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>  -->
+
+
     <!-- JS -->
     <script>
         //1.威力彩-第1區38選6，第2區8選1
         //2.大樂透-49數選6，1區選6，2區選1個號碼，可重複
         //3.今彩539-39數，只有1區，選5
-
-        // 遊戲設定 (areas區域)(name遊戲名)
-        const games = {
-            power: {
-                name: "威力彩",
-                areas: [
-                    { count: 6, max: 38, canRepeat: false, label: "第1區" },
-                    { count: 1, max: 8, canRepeat: false, label: "第2區" }
-                ]
-            },
-            lotto: {
-                name: "大樂透",
-                areas: [
-                    { count: 6, max: 49, canRepeat: false, label: "第1區" },
-                    { count: 1, max: 49, canRepeat: true, label: "第2區" }
-                ]
-            },
-            "539": {
-                name: "今彩539",
-                areas: [
-                    { count: 5, max: 39, canRepeat: false, label: "" }
-                ]
-            }
-        };
-
-        // 單區隨機號碼產生
-        function getRandomNumbers(count, max, canRepeat = false) {
-            const numbers = [];
-            while (numbers.length < count) {
-                const num = Math.floor(Math.random() * max) + 1;
-                if (canRepeat || !numbers.includes(num)) {
-                    numbers.push(num);
+        
+            // 遊戲設定 (areas區域)(name遊戲名)
+            const games = {
+                power: {
+                    name: "威力彩",
+                    areas: [
+                        { count: 6, max: 38, canRepeat: false, label: "第1區" },
+                        { count: 1, max: 8, canRepeat: false, label: "第2區" }
+                    ]
+                },
+                lotto: {
+                    name: "大樂透",
+                    areas: [
+                        { count: 6, max: 49, canRepeat: false, label: "第1區" },
+                        { count: 1, max: 49, canRepeat: true, label: "第2區" }
+                    ]
+                },
+                "539": {
+                    name: "今彩539",
+                    areas: [
+                        { count: 5, max: 39, canRepeat: false, label: "" }
+                    ]
                 }
+            };
+
+            // 單區隨機號碼產生
+            function getRandomNumbers(count, max, canRepeat = false) {
+                const numbers = [];
+                while (numbers.length < count) {
+                    const num = Math.floor(Math.random() * max) + 1;
+                    if (canRepeat || !numbers.includes(num)) {
+                        numbers.push(num);
+                    }
+                }
+                return numbers.sort((a, b) => a - b);
             }
-            return numbers.sort((a, b) => a - b);
-        }
 
-        function playGame(gameKey) {
-            const game = games[gameKey];
-            if (!game) return;
+            function playGame(gameKey) {
+                const game = games[gameKey];
+                if (!game) return;
 
-            let resultText = `<b>${game.name}號碼：</b><br><hr>`;
-            game.areas.forEach(area => {
-                const nums = getRandomNumbers(area.count, area.max, area.canRepeat);
-                resultText += area.label ? `${area.label} ` : "";
-                resultText += `${nums.join(", ")}<br><hr>`;
-            });
+                let resultText = `<b>${game.name}號碼：</b><br><hr>`;
+                game.areas.forEach(area => {
+                    const nums = getRandomNumbers(area.count, area.max, area.canRepeat);
+                    resultText += area.label ? `${area.label} ` : "";
+                    resultText += `${nums.join(", ")}<br><hr>`;
+                });
 
-            document.getElementById("result").innerHTML = resultText.trim();
-        }
+                document.getElementById("result").innerHTML = resultText.trim();
+            }
+
+    //         //table
+    //         let round = 1; // 期數
+
+    //         function playGame(type) {
+    //         let resultText = "";
+    //         let area1 = [];
+    //         let area2 = [];
+    //         let showArea2 = true;
+
+            
+    //         if (type === 1) { // 威力彩
+    //             area1 = getRandomNumbers(6, 38);
+    //             area2 = getRandomNumbers(1, 8);
+    //             resultText = `威力彩號碼：<br>第1區 ${area1.join(", ")}<br>第2區 ${area2[0]}`;
+    //         }
+    //         else if (type === 2) { // 大樂透
+    //             area1 = getRandomNumbers(6, 49);
+    //             area2 = getRandomNumbers(1, 49, true);
+    //             resultText = `大樂透號碼：<br>第1區 ${area1.join(", ")}<br>第2區 ${area2[0]}`;
+    //         }
+    //         else if (type === 3) { // 今彩539
+    //             area1 = getRandomNumbers(5, 39);
+    //             showArea2 = false;
+    //             resultText = `今彩539號碼：<br>${area1.join(", ")}`;
+    //         }
+    //         document.getElementById("result").innerHTML = resultText;
+    //         // 更新表格
+    //         const table = document.getElementById("historyTable").querySelector("tbody");
+    //         const tr = document.createElement("tr");
+    //         tr.innerHTML = `
+    //     <td>第${round}期</td>
+    //     <td>${area1.join(", ")}</td>
+    //     <td>${showArea2 ? area2[0] : "-"}</td>
+    // `;
+    //         table.appendChild(tr);
+    //         round++;
+    //     }
+            
     </script>
 
-<h2>已開出號碼紀錄</h2>
-<table id="historyTable" border="1" cellpadding="6">
-    <thead>
-        <tr>
-            <th>期數</th>
-            <th>第一區</th>
-            <th>第二區</th>
-        </tr>
-    </thead>
-    <tbody></tbody>
-</table>
+    
 
-<script>
-// 進階的如果要增加一區塊顯示開過的歷史號碼?????
-        // 前面var個 內容儲存區嗎?
-        // var個[]次數記錄區 ?
-        // 把猜數字遊戲的規則帶入?
-        // if (開獎次數 > 0) {就顯示第${}期，開獎號碼是${}號}
 
-let round = 1; // 期數
-
-function playGame(type) {
-    let resultText = "";
-    let area1 = [];
-    let area2 = [];
-    let showArea2 = true;
-
-    if (type === 1) { // 威力彩
-        area1 = getRandomNumbers(6, 38);
-        area2 = getRandomNumbers(1, 8);
-        resultText = `威力彩號碼：<br>第1區 ${area1.join(", ")}<br>第2區 ${area2[0]}`;
-    } 
-    else if (type === 2) { // 大樂透
-        area1 = getRandomNumbers(6, 49);
-        area2 = getRandomNumbers(1, 49, true);
-        resultText = `大樂透號碼：<br>第1區 ${area1.join(", ")}<br>第2區 ${area2[0]}`;
-    } 
-    else if (type === 3) { // 今彩539
-        area1 = getRandomNumbers(5, 39);
-        showArea2 = false;
-        resultText = `今彩539號碼：<br>${area1.join(", ")}`;
-    }
-
-    document.getElementById("result").innerHTML = resultText;
-
-    // 更新表格
-    const table = document.getElementById("historyTable").querySelector("tbody");
-    const tr = document.createElement("tr");
-    tr.innerHTML = `
-        <td>第${round}期</td>
-        <td>${area1.join(", ")}</td>
-        <td>${showArea2 ? area2[0] : "-"}</td>
-    `;
-    table.appendChild(tr);
-    round++;
-}
-</script>
 
 
 
