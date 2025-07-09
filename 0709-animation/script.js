@@ -47,7 +47,13 @@ function update() {
         // 計算模糊
         const blur = Math.abs(dist) * 5;
 
+        // 左右交錯(三角函數 讓 X 隨 index 產生彎曲感)
+        const x = dist * 120; // 每張相差120px
+        const y = ((i % 2 === 0) ? 1 : -1) * Math.abs(dist) * 60; // 上下
+
         items[i].style.transform = `
+            translateX(${x}px)
+            translateY(${y}px)
             translateZ(${z}px)
             scale(${scale})
         `;
