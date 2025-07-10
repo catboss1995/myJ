@@ -1,37 +1,41 @@
-const images = [
-    './1.jpg',
-    './2.jpg',
-    './3.jpg',
-    './4.jpg',
-    './5.jpg',
-    './1.jpg',
-    './2.jpg',
-    './3.jpg',
-    './4.jpg',
-    './5.jpg',
-    './1.jpg',
-    './2.jpg',
-    './3.jpg',
-    './4.jpg',
-    './5.jpg',
+const cards = [
+    { type: 'img', src: './1.jpg', alt: '第一張圖說明文字' },
+    { type: 'text', text: '這裡是SEO重要說明或口號、敘述、介紹內容' },
+    { type: 'img', src: './2.jpg', alt: '第二張圖說明文字' },
+    { type: 'text', text: '關鍵字、品牌Slogan、產品特色' },
+    { type: 'img', src: './3.jpg', alt: '第三張圖說明文字' },
+    { type: 'text', text: '關鍵字、品牌Slogan、產品特色' },
+    { type: 'img', src: './4.jpg', alt: '第四張圖說明文字' },
+    { type: 'text', text: '關鍵字、品牌Slogan、產品特色' },
+    { type: 'img', src: './5.jpg', alt: '第五張圖說明文字' },
 ];
+/* 圖片記得加上 alt 有助於 SEO 與無障礙 */
 
 const itemsEl = document.querySelector('.items');
 let current = 0;
-const max = images.length - 1;
+const max = cards.length - 1;
 
 // 建立卡片
 function render() {
-    images.forEach((src, i) => {
+    cards.forEach((card, i) => {
         const li = document.createElement('li');
         li.className = 'item';
-        const img = document.createElement('img');
-        img.src = src;
-        li.appendChild(img);
+        if(card.type === 'img'){
+            const img = document.createElement('img');
+            img.src = card.src;
+            img.alt = card.alt || '';
+            li.appendChild(img);
+        }else if(card.type === 'text'){
+            const p = document.createElement('p');
+            p.textContent = card.text;
+            p.className = 'card-text';
+            li.appendChild(p);
+        }
         itemsEl.appendChild(li);
     });
     update();
 }
+
 
 // 每張卡片根據與 current 的距離計算樣式
 function update() {
