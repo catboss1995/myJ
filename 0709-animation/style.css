@@ -1,0 +1,53 @@
+body {
+    margin: 0;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+    background: #181a22;
+}
+.wrap {
+    height: 100vh;
+    perspective: 1200px;
+    overflow: hidden;
+    position: relative;
+}
+.items {
+    transform-style: preserve-3d;
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+}
+.item {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition:
+        opacity 0.5s cubic-bezier(0.23,1,0.32,1),
+        filter 0.5s cubic-bezier(0.23,1,0.32,1),
+        transform 0.7s cubic-bezier(0.23,1,0.32,1);
+    will-change: opacity, transform, filter;
+}
+.item img {
+    max-width: 60vw;
+    max-height: 70vh;
+    border-radius: 2.5vw;
+    box-shadow: 0 16px 40px #000a;
+    background: #fff2;
+    transition: box-shadow 0.5s;
+}
+/* 放字的地方我寫成了卡片 */
+.card-text {
+    font-size: 2.5rem;
+    color: #fff;
+    background: rgba(30, 34, 40, 0);
+    border-radius: 0vw; 
+    padding: 60px 5vw;
+    /* box-shadow: 0 8px 40px #000a; *//* 陰影先關掉 */
+    text-align: center;
+    line-height: 1.5;
+    font-weight: bold;
+}

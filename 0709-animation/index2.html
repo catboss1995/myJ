@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Scroll Animation Demo</title>
+    <!-- 透明&位移，當 {.show } 套用時動畫出場 -->
+    <style>
+        body {
+            margin: 0;
+            font-family: sans-serif;
+            background: #191a1d;
+        }
+
+        .section {
+            opacity: 0;
+            transform: translateY(60px);
+            transition: opacity 0.8s cubic-bezier(0.23, 1, 0.32, 1), transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+            background: #fff1;
+            margin: 80px auto;
+            width: 60vw;
+            max-width: 600px;
+            min-height: 200px;
+            border-radius: 30px;
+            color: #fff;
+            font-size: 2rem;
+            text-align: center;
+            padding: 60px 0;
+            box-shadow: 0 6px 32px #0008;
+        }
+
+        .section.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<!-- 動畫場 -->
+<body>
+    <div class="section">Section 1</div>
+    <div class="section">Section 2</div>
+    <div class="section">Section 3</div>
+    <div class="section">Section 4</div>
+    <div class="section">Section 5</div>
+
+    <!-- JS Intersection Observer ，進入視窗的元素加上 {.show }-->
+    <script> 
+        const sections = document.querySelectorAll('.section');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                }
+            });
+        }, { threshold: 0.2 });
+
+        sections.forEach(section => observer.observe(section));
+    </script>
+</body>
+
+</html>
