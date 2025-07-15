@@ -27,12 +27,82 @@
         // printEvery3();
 
         // 3
-        function stars(n){
-            let return = '';
-            for (let i =0 ; i < n; i++){
-            return = "*";
-            }
+        function stars(n) {
+        let result = '';
+        for (let i = 0; i < n; i++) {
+        result += '*';
         }
+        console.log(result);
+       }
+
+        // 4
+        function isUpperCase(str) {
+        if (str.length === 0) return false;
+        return str[0] === str[0].toUpperCase();
+        }
+        console.log(isUpperCase("ABCD"));   // true
+        console.log(isUpperCase(""));       // false
+        console.log(isUpperCase("aBCD"));   // false
+
+        // 5
+        function isAllUpperCase(str) {
+  if (str.length === 0) return false;
+  return str === str.toUpperCase();
+}
+
+
+//6
+ function position(str) {
+  for (let i = 0; i < str.length; i++) {
+    const ch = str[i];
+    if (ch === ch.toUpperCase() && ch !== ch.toLowerCase()) {
+      console.log(ch, i);
+      return;
+    }
+  }
+  console.log(-1);
+}
+
+//7
+function findSmallCount(arr, num) {
+  return arr.filter(x => x < num).length;
+}
+
+//8
+function findSmallerTotal(arr, num) {
+  let total = 0;
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] < num) {
+      total += arr[i];
+    }
+  }
+  return total;
+}
+
+//9
+function findAllSmall(arr, num) {
+  let result = [];
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] < num) {
+      result.push(arr[i]);
+    }
+  }
+  return result;
+}
+
+//function findAllSmall(arr, num) {
+  return arr.filter(x => x < num);
+}
+//10
+function sum(arr) {
+  let total = 0;
+  for (let i = 0; i < arr.length; i++) {
+    total += arr[i];
+  }
+  return total;
+}
+       
+ 
     
     </script>
 
