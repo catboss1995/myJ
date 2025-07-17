@@ -10,21 +10,21 @@
 <body>
   <script>
     // 1 ---------------------------------------------------------------------------------
-    function printMany(){
-        for (let i=1; i<=100; i++){
-            console.log[i];
-        }
-    }
-    printMany();
+    // function printMany(){
+    //     for (let i=1; i<=100; i++){
+    //         console.log[i];
+    //     }
+    // }
+    // printMany();
 
 
     // 2 ---------------------------------------------------------------------------------
-    function printEvery3(){
-        for (let i=1; i<=88; i+=3){
-            console.log[i];
-        }
-    }
-    printEvery3();
+    // function printEvery3(){
+    //     for (let i=1; i<=88; i+=3){
+    //         console.log[i];
+    //     }
+    // }
+    // printEvery3();
 
     // 3 ---------------------------------------------------------------------------------
     // function stars(n) {
@@ -38,13 +38,23 @@
     // stars(10);	 // **********
 
     // 4 ---------------------------------------------------------------------------------
-    // function isUpperCase(str) {
-    //   if (str.length === 0) return false;
-    //   return str[0] === str[0].toUpperCase();
-    // }
-    // console.log(isUpperCase("ABCD"));   // true
-    // console.log(isUpperCase(""));       // false
-    // console.log(isUpperCase("aBCD"));   // false
+  //   function isUpperCase(str) {
+  //     if (str.trim().length == 0) {
+  //     return false;
+  //   }
+
+  //   // if (str[0] === str[0].toUpperCase()){
+  //   //   return true;
+  //   // }else{
+  //   //   return false;
+  //   // }
+
+  //   //簡寫
+  //   return str[0] === str[0].toUpperCase();
+  // }
+  //   console.log(isUpperCase("ABCD"));   // true
+  //   console.log(isUpperCase(""));       // false
+  //   console.log(isUpperCase("aBCD"));   // false
 
     // 5 ---------------------------------------------------------------------------------
     // function isAllUpperCase(str) {
@@ -56,20 +66,20 @@
     // console.log(isAllUpperCase("ABCDEFGHIJKLm")); 	// returns false
 
 
-    //6 ---------------------------------------------------------------------------------
-    // function position(str) {
-    //   for (let i = 0; i < str.length; i++) {
-    //     const ch = str[i];
-    //     if (ch === ch.toUpperCase() && ch !== ch.toLowerCase()) {
-    //       console.log(ch, i);
-    //       return;
-    //     }
-    //   }
-    //   console.log(-1);
-    // }
-    // console.log(position("abcd")); 	// prints -1
-    // console.log(position("AbcD"));		// prints A 0
-    // console.log(position("abCD")); 	// prints C 2
+    // 6 ---------------------------------------------------------------------------------
+    function position(str) {
+      for (let i = 0; i < str.length; i++) {
+        const ch = str[i];
+        if (ch === ch.toUpperCase() && ch !== ch.toLowerCase()) {
+          console.log(ch, i);
+          return;
+        }
+      }
+      console.log(-1);
+    }
+    console.log(position("abcd")); 	// prints -1
+    console.log(position("AbcD"));		// prints A 0
+    console.log(position("abCD")); 	// prints C 2
 
     //7 ---------------------------------------------------------------------------------
     // function findSmallCount(arr, num) {
